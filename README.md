@@ -12,10 +12,13 @@ Hero block
 
 loads a block in the editor called Hero
 
-editable fields
-header text
-background image
-overlay tint color
-text color
-call to action button 1
-call to action button 2
+selectors for themeing
+
+.wp-block-russblock-hero
+.wp-block-russblock-hero .overlay
+.wp-block-russblock-hero .row
+.wp-block-russblock-hero h2.hero-heading
+.wp-block-russblock-hero h3.hero-subheading
+.wp-block-russblock-hero a.hero-button
+.wp-block-russblock-hero a.hero-button.primary
+.wp-block-russblock-hero a.hero-button.secondary

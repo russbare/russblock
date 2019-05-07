@@ -14,7 +14,7 @@
     height: 100%;
 }
 
-.wp-block-russblock-hero .content {
+.wp-block-russblock-hero .row {
   position: relative;
   z-index: 1;
 }
@@ -30,7 +30,6 @@
 .wp-block-russblock-hero .hero-button {
   position: relative;
   display: inline-block;
-  margin-right: 16px;
   border: 2px solid;
   border-radius: 2px;
   font-size: 16pt;
@@ -42,11 +41,6 @@
   color: inherit;
 }
 
-.wp-block-russblock-hero .hero-button:hover {
-  background-color: white;
-  color: orange;
-}
-
 .wp-block-russblock-hero h1, h2, h3, h4, h5 {
   color: inherit;
 }
@@ -56,4 +50,5 @@
 }
 
 .wp-block-russblock-hero .secondary {
+  margin-left: 16px;
 }
