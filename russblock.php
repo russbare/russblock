@@ -8,6 +8,19 @@
  * @package russblock
  */
 
+ function my_plugin_block_categories( $categories, $post ) {
+     return array_merge(
+         $categories,
+         array(
+             array(
+                 'slug' => 'russblock',
+                 'title' => __( 'Russ Blocks', 'russblock' ),
+             ),
+         )
+     );
+ }
+ add_filter( 'block_categories', 'my_plugin_block_categories', 10, 2 );
+
  function russblock_hero_editor_assets() {
      wp_enqueue_script(
          'russblock/hero',
@@ -31,7 +44,6 @@
  	);
  }
  add_action( 'enqueue_block_assets', 'russblock_hero_assets' );
-
 
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {

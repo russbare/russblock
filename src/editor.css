@@ -6,6 +6,10 @@
   margin: 2em 0;
 }
 
+.inspector-element h5 {
+  margin-top: 16px;
+}
+
 .button {
 
 }

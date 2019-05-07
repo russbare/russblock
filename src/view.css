@@ -1,8 +1,6 @@
-.wp-block-russblock-hero{
-  padding: 4em 0;
-  text-align: center;
+.wp-block-russblock-hero {
+  padding: 4em;
   position: relative;
-  height: 70vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,23 +12,48 @@
     left: 0;
     width: 100%;
     height: 100%;
-    opacity: .4;
 }
 
 .wp-block-russblock-hero .content {
-    position: relative;
-    z-index: 1;
+  position: relative;
+  z-index: 1;
 }
 
-.wp-block-russblock-hero .button {
-  box-sizing: border-box;
-  border: .2em solid;
-  background-color: transparent;
-  margin: 20px auto;
-  border-radius: 8px;
+.wp-block-russblock-hero .hero-heading{
+
+}
+
+.wp-block-russblock-hero .hero-subheading{
+
+}
+
+.wp-block-russblock-hero .hero-button {
+  position: relative;
+  display: inline-block;
+  margin-right: 16px;
+  border: 2px solid;
+  border-radius: 2px;
   font-size: 16pt;
   padding: 10px 16px;
   font-weight: bold;
   z-index: 999;
   height: auto;
+  clear: none;
+  color: inherit;
+}
+
+.wp-block-russblock-hero .hero-button:hover {
+  background-color: white;
+  color: orange;
+}
+
+.wp-block-russblock-hero h1, h2, h3, h4, h5 {
+  color: inherit;
+}
+
+.wp-block-russblock-hero .primary {
+
+}
+
+.wp-block-russblock-hero .secondary {
 }

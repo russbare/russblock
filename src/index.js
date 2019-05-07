@@ -1,4 +1,4 @@
-import { Button, TextControl } from '@wordpress/components';
+import { Button, TextControl, RadioControl, RangeControl } from '@wordpress/components';
 
 const { registerBlockType } = wp.blocks;
 const { RichText, PlainText, InspectorControls, MediaUpload, ColorPalette } = wp.editor;
@@ -7,12 +7,25 @@ const { RichText, PlainText, InspectorControls, MediaUpload, ColorPalette } = wp
 registerBlockType('russblock/hero', {
         title: 'Hero',
         icon: 'format-image',
-        category: 'common',
+        category: 'russblock',
         attributes: {
-            textString: {
+            heroHeight: {
+              type: 'string',
+              default: '70vh',
+            },
+            heroAlign: {
+              type: 'string',
+              default: 'center',
+            },
+            heroHeading: {
                 type: 'array',
                 source: 'children',
                 selector: 'h2',
+            },
+            heroSubheading: {
+                type: 'array',
+                source: 'children',
+                selector: 'h3',
             },
             backgroundImage: {
                 type: 'string',
@@ -25,6 +38,10 @@ registerBlockType('russblock/hero', {
             overlayColor: {
                 type: 'string',
                 default: null,
+            },
+            overlayOpacity: {
+                type: 'float',
+                default: .3,
             },
             cta1Text: {
                 type: 'string',
@@ -45,12 +62,55 @@ registerBlockType('russblock/hero', {
         },
 
         edit(props) {
-            const { setAttributes, attributes, className, focus } = props;
-            const { backgroundImage, fontColor, overlayColor, cta1Text, cta1Target, cta2Text, cta2Target } = props.attributes;
+            const {
+              setAttributes,
+              attributes,
+              className,
+              focus
+            } = props;
 
-            function onTextChange(changes) {
+            const {
+              heroAlign,
+              heroHeight,
+              heroHeading,
+              heroSubheading,
+              backgroundImage,
+              fontColor,
+              overlayColor,
+              overlayOpacity,
+              cta1Text,
+              cta1Target,
+              cta2Text,
+              cta2Target
+            } = props.attributes;
+
+            function onHeightChange(changes) {
               setAttributes({
-                textString: changes
+                heroHeight: changes
+              });
+            }
+
+            function onHeadingChange(changes) {
+              setAttributes({
+                heroHeading: changes
+              });
+            }
+
+            function onSubheadingChange(changes) {
+              setAttributes({
+                heroSubheading: changes
+              });
+            }
+
+            function onAlignChange(changes) {
+              setAttributes({
+                heroAlign: changes
+              });
+            }
+
+            function onHeightChange(changes) {
+              setAttributes({
+                heroHeight: changes
               });
             }
 
@@ -69,6 +129,12 @@ registerBlockType('russblock/hero', {
             function onOverlayColorChange(changes) {
               setAttributes({
                 overlayColor: changes
+              });
+            }
+
+            function onOverlayOpacityChange(changes) {
+              setAttributes({
+                overlayOpacity: ( changes / 100 )
               });
             }
 
@@ -100,28 +166,54 @@ registerBlockType('russblock/hero', {
               <InspectorControls>
                 RussBlock - Hero
                 <div className="inspector-element">
-                  <strong>Select a font color:</strong>
+                  <strong>Sizing</strong>
+                  <h5>Height:</h5>
+                  <TextControl
+                    value={ heroHeight }
+                    onChange={ onHeightChange }
+                    />
+                </div>
+                <div className="inspector-element">
+                  <strong>Font Options</strong>
+                  <h5>Alignment</h5>
+                  <RadioControl
+                    selected={ heroAlign }
+                    options={ [
+                        { label: 'left', value: 'left' },
+                        { label: 'center', value: 'center' },
+                        { label: 'right', value: 'right' },
+                    ] }
+                    onChange={onAlignChange}
+                  />
+
+                  <h5>Text Color</h5>
                   <ColorPalette
                     value={fontColor}
                     onChange={onTextColorChange}
                   />
                 </div>
                 <div className="inspector-element">
-                  <strong>Select an overlay color:</strong>
+                  <strong>Background</strong>
+                  <h5>Overlay Color</h5>
                   <ColorPalette
                     value={overlayColor}
                     onChange={onOverlayColorChange}
                   />
-                </div>
-                <div className="inspector-element">
-                  <strong>Select a background image:</strong>
+                  <h5>Overlay Opacity</h5>
+                  <RangeControl
+                    value={ (overlayOpacity * 100) }
+                    onChange={ onOverlayOpacityChange }
+                    min={ 0 }
+                    max={ 100 }
+                  />
+                  <h5>Background Image</h5>
                   <MediaUpload
                       onSelect={onImageSelect}
                       type="image"
                       value={backgroundImage}
                       render={({ open }) => (
                           <button onClick={open}>
-                              Upload Image!
+                              select image
                           </button>
                       )}
                     />
@@ -142,64 +234,87 @@ registerBlockType('russblock/hero', {
                 style={{
                   backgroundImage: `url(${backgroundImage})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
+                  backgroundPosition: 'center',
+                  textAlign: heroAlign,
+                  color: fontColor,
+                  height: heroHeight
               }}>
-                <div className="overlay" style={{ background: overlayColor }}></div>
+                <div className="overlay" style={{ background: overlayColor, opacity: overlayOpacity }}></div>
+                <div className="row">
                 <RichText tagName="h2"
-                    value={attributes.textString}
-                    onChange={onTextChange}
-                    style={{
-                      color: fontColor
-                    }}
-                    placeholder="Enter your text here!"/>
+                    value={heroHeading}
+                    onChange={onHeadingChange}
+                    placeholder="Heading"/>
+                <RichText tagName="h3"
+                    value={heroSubheading}
+                    onChange={onSubheadingChange}
+                    placeholder="Subheading"/>
                   {!!cta1Text ?
-                    <a className="button"
-                      style={{
-                        color: fontColor
-                    }}>{cta1Text}</a> : null}
+                    <a className="hero-button primary">{cta1Text}</a> : null}
 
                   {!!cta2Text ?
-                    <a className="button"
-                      style={{
-                        color: fontColor
-                    }}>{cta2Text}</a> : null}
+                    <a className="hero-button secondary">{cta2Text}</a> : null}
+                  </div>
               </div>,
             ]);
         },
 
         save(props) {
-          const { attributes, className } = props;
-          const { backgroundImage, fontColor, overlayColor, cta1Text, cta1Target, cta2Text, cta2Target } = props.attributes;
+          const {
+            attributes,
+            className
+          } = props;
+
+          const {
+            heroAlign,
+            heroHeight,
+            heroHeading,
+            heroSubheading,
+            backgroundImage,
+            fontColor,
+            overlayColor,
+            overlayOpacity,
+            cta1Text,
+            cta1Target,
+            cta2Text,
+            cta2Target
+          } = props.attributes;
 
             return (
               <div className={className}
                 style={{
                   backgroundImage: `url(${backgroundImage})`,
                   backgroundSize: 'cover',
-                  backgroundPosition: 'center'
+                  backgroundPosition: 'center',
+                  textAlign: heroAlign,
+                  color: fontColor,
+                  height: heroHeight
               }}>
                 <div className="overlay" style={{
-                  backgroundColor: overlayColor
+                  backgroundColor: overlayColor,
+                  opacity: overlayOpacity,
                 }}></div>
-                <RichText.Content
-                  tagName="h2"
-                  class="content"
-                  value={attributes.textString}
-                  style={{
-                    color: fontColor
-                  }}
-                />
-                {!!cta1Text ?
-                  <a href={cta1Target} className="button"
-                    style={{
-                        color: fontColor
-                  }}>{cta1Text}</a> : null}
+                <div className="row">
+                {!!heroHeading ?
+                  <RichText.Content
+                    tagName="h2"
+                    class="hero-heading content"
+                    value={heroHeading}
+                  /> : null}
 
-                  {!!cta2Text ?
-                    <a href={cta2Target} className="button"
-                      style={{
-                          color: fontColor
-                    }}>{cta2Text}</a> : null}
+                {!!heroSubheading ?
+                  <RichText.Content
+                    tagName="h3"
+                    class="hero-subheading content"
+                    value={heroSubheading}
+                  /> : null}
+
+                {!!cta1Text ?
+                  <a href={cta1Target} className="hero-button primary">{cta1Text}</a> : null}
+
+                {!!cta2Text ?
+                  <a href={cta2Target} className="hero-button secondary">{cta2Text}</a> : null}
+              </div>
               </div>
             );
         }
