@@ -1,6 +1,6 @@
 # russblock
 
-dev instructions:
+ instructions:
 
 install to plugins folder
 

@@ -6,6 +6,9 @@ export const hero = {
   icon: 'format-image',
   category: 'russblock',
   attributes: {
+    heroSecondary: {
+
+    },
     heroHeight: {
       type: 'string',
       default: '70vh',
@@ -151,7 +154,7 @@ export const hero = {
         });
       }
 
-      function oncta1DisplayChange(changes) {
+      function onCTA1DisplayChange(changes) {
         setAttributes({
           cta1Display: changes
         });
@@ -163,7 +166,7 @@ export const hero = {
         });
       }
 
-      function oncta2DisplayChange(changes) {
+      function onCTA2DisplayChange(changes) {
         setAttributes({
           cta2Display: changes
         });
@@ -248,7 +251,7 @@ export const hero = {
             <TextControl
               label='display'
               value={ cta1Display }
-              onChange={ oncta1DisplayChange } />
+              onChange={ onCTA1DisplayChange } />
             <TextControl
               label='target'
               value={ cta1Target }
@@ -258,7 +261,7 @@ export const hero = {
             <TextControl
               label='display'
               value={ cta2Display }
-              onChange={ oncta2DisplayChange } />
+              onChange={ onCTA2DisplayChange } />
             <TextControl
               label='target'
               value={ cta2Target }
@@ -330,7 +333,8 @@ export const hero = {
       cta1Display,
       cta1Target,
       cta2Display,
-      cta2Target
+      cta2Target,
+
     } = props.attributes;
 
       return (
