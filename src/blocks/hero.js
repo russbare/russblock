@@ -5,6 +5,9 @@ export const hero = {
   title: 'Hero',
   icon: 'format-image',
   category: 'russblock',
+  supports: {
+      align: true,
+    },
   attributes: {
     heroSecondary: {
 
