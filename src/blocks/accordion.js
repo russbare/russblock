@@ -1,12 +1,27 @@
+import { TextControl } from '@wordpress/components';
+
+
 export const accordion = {
   title: 'Accordion',
   icon: 'format-image',
   category: 'russblock',
-  attributes: {},
+  attributes: {
+    
+  },
   edit(props) {
-    return();
+
+    return(
+      <InspectorControls>
+
+      </InspectorControls>,
+      <div>
+      </div>
+    );
   },
   save(props) {
-    return();
+    return(
+      <div>
+      </div>
+    );
   }
-}
+};
