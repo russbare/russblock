@@ -45,6 +45,12 @@
  }
  add_action( 'enqueue_block_assets', 'russblock_hero_assets' );
 
+
+function russblock_add_wide_align() {
+  add_theme_support( 'align-wide' );
+}
+add_action( 'after_setup_theme', 'russblock_add_wide_align' );
+
 // Exit if accessed directly.
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
