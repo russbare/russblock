@@ -9,9 +9,6 @@ export const hero = {
       align: true,
     },
   attributes: {
-    heroSecondary: {
-
-    },
     heroHeight: {
       type: 'string',
       default: '70vh',
