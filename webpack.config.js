@@ -2,7 +2,9 @@
 const path = require('path');
 
 // Webpack expects an exported object with all the configurations, so we export an object here
-module.exports = {
+module.exports =
+[
+{
     entry: './src/index.js', // Where to find our main js
     output: {
         // where we want our built file to go to and be named
@@ -23,6 +25,36 @@ module.exports = {
             }
         ]
     },
+    externals: {
+            react: "React",
+            'react-dom': 'ReactDOM'
+        },
     // Webpack yells at you if you don't choose a mode...
     mode: 'development'
-}
+},
+{
+    entry: './src/frontend.js',
+    output: {
+        filename: 'view.build.js',
+        path: path.resolve(__dirname, 'build')
+    },
+    module: {
+        rules: [
+            {
+                // basically tells webpack to use babel with the correct presets
+                test: /\.js$/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['@babel/preset-env', '@babel/preset-react'],
+                    plugins: ["@babel/plugin-proposal-class-properties"]
+                }
+            }
+        ]
+    },
+    externals: {
+            react: "React",
+            'react-dom': 'ReactDOM'
+        },
+    // Webpack yells at you if you don't choose a mode...
+    mode: 'development'
+}];

@@ -1,10 +1,23 @@
 .wp-block-russblock-hero{
 }
 
-.inspector-element{
-  margin: 2em 0;
+/*
+ # Columns
+*/
+
+.wp-block-russblock-columns {
+  border: 1px solid black;
 }
 
-.inspector-element h5 {
-  margin-top: 16px;
+/*
+ # Column
+ */
+
+.wp-block-russblock-column {
+  border: 1px solid blue;
+}
+
+.wp-block-russblock-section {
+  border: 1px solid blue;
+  min-height: 300px;
 }

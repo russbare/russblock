@@ -1,3 +1,9 @@
+
+
+/*
+ # Hero
+*/
+
 .wp-block-russblock-hero {
   padding: 4em;
   position: relative;
@@ -51,4 +57,131 @@
 
 .wp-block-russblock-hero .secondary {
   margin-left: 16px;
+}
+
+/*
+ # Masonry Gallery
+*/
+
+.wp-block-russblock-masonry-gallery.row img{
+  height: 100%;
+}
+
+.wp-block-russblock-masonry-gallery.column img{
+  height: auto;
+}
+
+/*
+ # Accordion
+*/
+
+.wp-block-russblock-accordion {}
+
+/*
+ # Accordion Item
+*/
+
+.wp-block-russblock-accordion .accordion-item {}
+
+.accordion-item.open .accordion-item-content{
+  display: block;
+  overflow: hidden;
+  max-height: 500px;
+  transition: max-height 1s ease-out;
+}
+
+.accordion-item.closed .accordion-item-content{
+  display: hidden;
+  overflow: hidden;
+  max-height: 0;
+  transition: maxpheight 1s ease-out;
+}
+
+.wp-block-russblock-accordion .accordion-item .accordion-item-heading{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  background-color: lightgrey;
+}
+
+.wp-block-russblock-accordion .accordion-item .accordion-item-content{}
+
+.wp-block-russblock-accordion .accordion-item .accordion-item-heading .accordion-indicator{
+  position: absolute;
+  right: 0;
+  padding: 0 2em;
+}
+
+.wp-block-russblock-accordion .accordion-item.open .accordion-item-heading .accordion-indicator{
+  transform: rotate(180deg);
+  transition: transform .15s ease-out;
+}
+
+.wp-block-russblock-accordion .accordion-item.closed .accordion-item-heading .accordion-indicator{
+
+}
+
+.wp-block-russblock-accordion .accordion-item .accordion-item-heading h2 {
+  padding: 0 2em;
+}
+
+/*
+ # Carousel
+*/
+
+.wp-block-russblock-carousel {}
+
+/*
+ # Card
+*/
+
+.wp-block-russblock-card {}
+
+/*
+ # Columns
+*/
+
+.wp-block-russblock-columns {
+
+}
+
+/*
+ # Column
+ */
+
+.wp-block-russblock-column {
+
+}
+
+/*
+ # Section
+*/
+
+.wp-block-russblock-section {
+
+}
+
+/*
+ # Team Member
+*/
+
+.wp-block-russblock-team-member {
+ text-align: center;
+ width: 250px;
+ border: 1px solid #333;
+ background: #eee;
+}
+
+.wp-block-russblock-team-member .wp-block-image{
+  border-radius: 125px;
+}
+
+.wp-block-russblock-team-member h1, h2, h3, h4, h5{
+
+}
+
+.wp-block-russblock-team-member p{
+
 }
