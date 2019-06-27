@@ -26,7 +26,6 @@ export default registerBlockType('russblock/team-member', {
           template={
             [['core/image'],['core/heading', { placeholder: 'team member name' } ],['core/paragraph', { placeholder: 'team member bio' } ]]
           }
-          templateLock='insert'
         />
       </div>
       </Fragment>

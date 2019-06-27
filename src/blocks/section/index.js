@@ -73,7 +73,7 @@ export default registerBlockType('russblock/section', {
     } = props;
 
     return(
-      <div
+      <section
         className={`${isParallaxEnabled}`}
         style={{
         backgroundImage: `url(${ sectionBackground })`}}
@@ -81,7 +81,7 @@ export default registerBlockType('russblock/section', {
         <div className='section-content'>
           <InnerBlocks.Content />
         </div>
-      </div>
+      </section>
     );
   }
 });
