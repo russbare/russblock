@@ -108,15 +108,16 @@
 
 .wp-block-russblock-accordion .accordion-item .accordion-item-content{}
 
-.wp-block-russblock-accordion .accordion-item .accordion-item-heading .accordion-indicator{
+.wp-block-russblock-accordion .accordion-item .accordion-item-heading::after{
+  content: '+';
+  display: block;
   position: absolute;
   right: 0;
   padding: 0 2em;
 }
 
-.wp-block-russblock-accordion .accordion-item.open .accordion-item-heading .accordion-indicator{
-  transform: rotate(180deg);
-  transition: transform .15s ease-out;
+.wp-block-russblock-accordion .accordion-item.open .accordion-item-heading::after{
+  content: '-';
 }
 
 .wp-block-russblock-accordion .accordion-item.closed .accordion-item-heading .accordion-indicator{
@@ -137,7 +138,9 @@
  # Card
 */
 
-.wp-block-russblock-card {}
+.wp-block-russblock-card {
+
+}
 
 /*
  # Columns
@@ -185,3 +188,7 @@
 .wp-block-russblock-team-member p{
 
 }
+
+/*
+ # Hero Test
+*/

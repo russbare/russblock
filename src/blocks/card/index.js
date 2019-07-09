@@ -1,8 +1,8 @@
 const { Fragment } = wp.element;
 
-const { TextControl, RadioControl } = wp.components;
+const {} = wp.components;
 
-const { InnerBlocks, InspectorControls, RichText } = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 const { registerBlockType } = wp.blocks;
 
@@ -19,20 +19,17 @@ export default registerBlockType('russblock/card', {
 
     return(
       <Fragment>
-      <InspectorControls>
-
-      </InspectorControls>
-      <div className={ className }>
-        <InnerBlocks />
-      </div>
+        <div className={ className }>
+          <InnerBlocks />
+        </div>
       </Fragment>
     );
   },
   save(props) {
     return(
-      <div>
+      <article>
         <InnerBlocks.Content />
-      </div>
+      </article>
     );
   }
 });

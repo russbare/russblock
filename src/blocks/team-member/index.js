@@ -33,9 +33,9 @@ export default registerBlockType('russblock/team-member', {
   },
   save(props) {
     return(
-      <div>
+      <article>
         <InnerBlocks.Content />
-      </div>
+      </article>
     );
   }
 });

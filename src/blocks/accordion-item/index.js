@@ -60,7 +60,7 @@ export default registerBlockType('russblock/accordion-item', {
     } = props;
 
     return(
-      <div data-itemHeading={itemHeading} data-itemContent={itemContent}>
+      <li data-itemHeading={itemHeading} data-itemContent={itemContent}>
         <div className="accordion-item-heading">
           <RichText.Content
             tagName="h2"
@@ -70,7 +70,7 @@ export default registerBlockType('russblock/accordion-item', {
         <div className="accordion-item-content">
           <InnerBlocks.Content />
         </div>
-      </div>
+      </li>
     );
   }
 });

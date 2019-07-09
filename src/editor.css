@@ -1,4 +1,7 @@
-.wp-block-russblock-hero{
+.wp-block-russblock-hero-test{
+  padding: 4em 1em;
+  background-position: center;
+  background-size: cover;
 }
 
 /*
@@ -20,4 +23,12 @@
 .wp-block-russblock-section {
   border: 1px solid blue;
   min-height: 300px;
+}
+
+/*
+ # Card
+*/
+
+.wp-block-russblock-card {
+  border: 1px solid blue;
 }

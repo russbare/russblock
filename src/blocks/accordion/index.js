@@ -2,7 +2,7 @@ const { Fragment } = wp.element;
 
 const { TextControl } = wp.components;
 
-const { InnerBlocks, InspectorControls } = wp.editor;
+const { InnerBlocks } = wp.editor;
 
 const { registerBlockType } = wp.blocks;
 
@@ -10,12 +10,7 @@ export default registerBlockType('russblock/accordion', {
   title: 'Accordion',
   icon: 'format-image',
   category: 'russblock',
-  attributes: {
-    accordionIndicator: {
-      type: 'string',
-      default: '^',
-    },
-  },
+  attributes: {},
   edit(props) {
     const {
       attributes,
@@ -24,8 +19,6 @@ export default registerBlockType('russblock/accordion', {
 
     return(
       <Fragment>
-        <InspectorControls>
-        </InspectorControls>
         <div className={ className }>
           <InnerBlocks
             template={[['russblock/accordion-item']]}
@@ -37,9 +30,9 @@ export default registerBlockType('russblock/accordion', {
   },
   save(props) {
     return(
-      <div>
+      <ul>
         <InnerBlocks.Content />
-      </div>
+      </ul>
     );
   }
 });

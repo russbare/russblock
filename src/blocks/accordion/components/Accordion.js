@@ -16,17 +16,16 @@ export default class Accordion extends React.Component {
         {elements.map( (element, index) => {
           return (
           <div className={`accordion-item ${this.state.currentFocus == index ? 'open' : 'closed'}`} key={index}>
-
-            <div className="accordion-item-heading" onClick={() => this.handleClick(event, index)}>
-              <span dangerouslySetInnerHTML={this.createMarkUp(element.heading)} />
-              <span className="accordion-indicator">
-              \/
-              </span>
+            <div
+              className="accordion-item-heading" 
+              onClick={() => this.handleClick(event, index)}
+              dangerouslySetInnerHTML={this.createMarkUp(element.heading)}
+            >
             </div>
-            <div className="accordion-item-content"
+            <div
+              className="accordion-item-content"
               dangerouslySetInnerHTML={this.createMarkUp(element.content)}
             />
-
           </div>
         )})}
       </div>
